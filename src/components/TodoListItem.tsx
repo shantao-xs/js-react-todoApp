@@ -18,7 +18,8 @@ export const TodoListItem = (props) => {
   return (
     <li className="todo">
       <label>
-        <input type="checkbox" checked={status === 'completed'} onChange={handleCheck}/> {label}
+        <input type="checkbox" checked={status === 'completed'} onChange={handleCheck}/>
+        {label}
       </label>
     </li>
   );

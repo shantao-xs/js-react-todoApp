@@ -14,10 +14,6 @@ export const TodoList = (props) => {
   const { todos, filter, toggleCompleted } = props;
   
   const filteredTodos = todos.filter((todo) => {
-    if (todo.status === 'cleared'){
-      return false;
-    };
-
     if (filter === 'all') {
       return true;
     } else if (filter === 'completed') {

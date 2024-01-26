@@ -29,9 +29,11 @@ const defaultTodos = [
 //? TodoList todos这个todos怎么理解？
 export const TodoApp = props => {
   const [todos, setTodos] = React.useState(defaultTodos);
-  const [filter, setFilter] = React.useState('all'); //是默认显示all的意思吗
+  //todo 这里的filter是内置函数吗？
+  const [filter, setFilter] = React.useState('all'); //是默认显示all的意思吗 
   
   //点击add新增todo(label)，伴随更新status
+  //! 注意：这里设计了每个数据的类型，应该有哪些属性
   const addTodo = (label)=>{
     const getId = ()=> Date.now().toString(); //根据输入时间先后生成id，然后调用这个函数获得id字段
     const newTodo = {
@@ -56,7 +58,7 @@ export const TodoApp = props => {
 
   //点击清除所有完成todo
   const clearCompleted = ()=>{
-    const newTodos = todos.filter((todo)=>todo.status != 'completed')
+    const newTodos = todos.filter((todo)=>todo.status !== 'completed')
     setTodos(newTodos);
   }
 
