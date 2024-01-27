@@ -11,9 +11,13 @@ import { TodoListItem } from './TodoListItem.tsx';
 
 //? 这里的{...todo为什么在属性这里？}
 export const TodoList = (props) => {
-  const { todos, filter, toggleCompleted } = props;
+  const { todos, filter, toggleCompleted,handleCancelClick } = props;
   
   const filteredTodos = todos.filter((todo) => {
+    if (todo.status === 'cleared'){
+      return false;
+    };
+
     if (filter === 'all') {
       return true;
     } else if (filter === 'completed') {
@@ -25,9 +29,15 @@ export const TodoList = (props) => {
     return false;
   })
 
+
+
   return (
     <ul className='todos'>
-      {todos.map((todo)=> <TodoListItem key={todo.id} {...todo} toggleCompleted={toggleCompleted} />)}
+      {filteredTodos.map((todo)=> <TodoListItem 
+                                    key={todo.id} 
+                                    {...todo} 
+                                    toggleCompleted={toggleCompleted}
+                                    handleCancelClick={handleCancelClick} />)}
     </ul>
   )
 }

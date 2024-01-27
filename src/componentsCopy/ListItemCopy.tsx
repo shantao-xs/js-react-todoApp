@@ -17,10 +17,10 @@ export const TodoListItem = (props)=>{
         //框架：点击完成按钮-input(checkbox)，todo具体文本-label，具体搭配用法如下图
         //样式：每个label设计样式
         //方法：每次勾选时(onChange)，都触发toggleCompleted方法，让对应id的todo bar的status改变
-        //todo: 这个checked={status === 'completed'}应该和List里的FilteredTodos只需要返回t/f有关
+        //*html tips： 在复选框<input type="inbox">中，通过onchange可以改变后台状态，通过checked则改变前端呈现（如只有在props.status === 'completed'的时候，小蓝勾才会勾在框框上）
         <li>
             <label className="">
-                <input type="checkbox" onChange={toggleCompleted(props.id)} checked={status === 'completed'}/>
+                <input type="checkbox" onChange={toggleCompleted(props.id)} checked={props.status === 'completed'}/>
                 {todo.label}
             </label>
         </li>
